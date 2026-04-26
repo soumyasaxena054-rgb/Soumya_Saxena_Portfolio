@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soumya Saxena | Frontend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08111f;
+      --surface: rgba(15, 23, 42, 0.86);
+      --surface-strong: #0f172a;
+      --surface-soft: rgba(30, 41, 59, 0.88);
+      --border: rgba(148, 163, 184, 0.18);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --shadow: 0 22px 70px rgba(2, 8, 23, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(34, 197, 94, 0.14), transparent 24%),
+        linear-gradient(180deg, #08111f 0%, #020617 100%);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0 34px;
+    }
+
+    .brand {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 24px;
+      align-items: stretch;
+      padding: 18px 0 24px;
+    }
+
+    .hero-main,
+    .hero-side,
+    .panel,
+    .project-card,
+    .experience-card,
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-main {
+      border-radius: 28px;
+      padding: 40px;
+    }
+
+    .hero-side {
+      border-radius: 24px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.1);
+      color: #7dd3fc;
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      line-height: 1.02;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .hero-main h1 span {
+      display: block;
+      background: linear-gradient(90deg, #f8fafc 0%, #7dd3fc 48%, #86efac 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead {
+      margin: 18px 0 0;
+      max-width: 62ch;
+      font-size: 1.02rem;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: linear-gradient(90deg, var(--accent), #60a5fa);
+      color: #03111f;
+      box-shadow: 0 12px 28px rgba(56, 189, 248, 0.22);
+    }
+
+    .button-secondary {
+      background: rgba(148, 163, 184, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .meta-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .meta-item small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .meta-item strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .section {
+      margin-top: 34px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 1.55rem;
+      font-weight: 800;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 52ch;
+      font-size: 0.95rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .project-card,
+    .experience-card,
+    .contact-card,
+    .panel {
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .project-top h3,
+    .experience-card h3,
+    .contact-card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.1);
+      color: #86efac;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .project-card p,
+    .experience-card p,
+    .contact-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .bullet-list {
+      margin: 16px 0 0;
+      padding-left: 18px;
+      color: #cbd5e1;
+    }
+
+    .bullet-list li + li {
+      margin-top: 8px;
+    }
+
+    .tech-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tech-pill,
+    .skill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(148, 163, 184, 0.07);
+      color: #dbeafe;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .project-note {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(148, 163, 184, 0.07);
+      color: #cbd5e1;
+      font-size: 0.88rem;
+    }
+
+    .experience-card {
+      display: grid;
+      gap: 12px;
+    }
+
+    .experience-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .highlight {
+      margin-top: 8px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(34, 197, 94, 0.1);
+      color: #bbf7d0;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(148, 163, 184, 0.07);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      color: var(--text);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(56, 189, 248, 0.32);
+    }
+
+    .contact-link span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      margin-top: 34px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(148, 163, 184, 0.12);
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      .hero,
+      .projects-grid,
+      .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 20px, 1120px);
+        padding-top: 18px;
+        padding-bottom: 56px;
+      }
+
+      .nav {
+        align-items: start;
+        flex-direction: column;
+        padding-bottom: 24px;
+      }
+
+      .hero-main,
+      .hero-side,
+      .project-card,
+      .experience-card,
+      .contact-card,
+      .panel {
+        padding: 20px;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-actions,
+      .project-links {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="nav">
+      <div class="brand">Soumya Saxena</div>
+      <nav class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">Frontend Developer • React Specialist</div>
+        <h1>Building thoughtful,<span>scalable web experiences.</span></h1>
+        <p class="lead">
+          I’m Soumya Saxena, a frontend engineer with 3.5 years of experience building React applications with reusable architecture, strong UI foundations, and product-focused execution. I enjoy turning complex workflows into clean interfaces that feel fast, clear, and dependable.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">View Projects</a>
+          <a class="button button-secondary" href="mailto:soumyasaxena054@gmail.com">Contact Me</a>
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <div class="meta-list">
+          <div class="meta-item">
+            <small>Current Role</small>
+            <strong>Software Developer (Frontend), Jio Platforms Limited</strong>
+          </div>
+          <div class="meta-item">
+            <small>Core Stack</small>
+            <strong>React, JavaScript, TypeScript, Redux Toolkit, Tailwind CSS</strong>
+          </div>
+          <div class="meta-item">
+            <small>Focus Areas</small>
+            <strong>Reusable components, state management, testing, and UI performance</strong>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-header">
+        <h2>Selected Projects</h2>
+        <p>
+          A mix of production-style side projects and frontend architecture practice, with an emphasis on component reuse, async data handling, and polished user flows.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-top">
+            <h3>Cinema-GPT</h3>
+            <span class="tag">AI + Full Stack</span>
+          </div>
+          <p>
+            A movie recommendation platform that combines AI-driven suggestions with real-time TMDB data inside a Netflix-inspired browsing experience.
+          </p>
+          <ul class="bullet-list">
+            <li>Built a production-style browse experience with responsive layouts, smooth user interactions, and an interface modeled around real streaming flows.</li>
+            <li>Integrated Groq-powered LLM recommendations so users can discover movies through natural language prompts instead of static filtering.</li>
+            <li>Fetched dynamic trailers, popular titles, and regional content from TMDB APIs and organized them into a scalable Redux Toolkit state layer.</li>
+            <li>Implemented Firebase authentication with protected routes and session-aware navigation.</li>
+            <li>Used reusable components, custom hooks, and performance optimizations to reduce redundant API calls and keep the app maintainable.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-pill">React</span>
+            <span class="tech-pill">Redux Toolkit</span>
+            <span class="tech-pill">Firebase</span>
+            <span class="tech-pill">Tailwind CSS</span>
+            <span class="tech-pill">Groq API</span>
+            <span class="tech-pill">TMDB API</span>
+          </div>
+          <div class="project-note">
+            TMDB services may be region-restricted in some locations. A VPN such as WARP may be needed to access full functionality.
+          </div>
+          <div class="project-links">
+            <a class="button button-primary" href="https://cinema-gpt-netflix.vercel.app/browser" target="_blank" rel="noreferrer">Live Demo</a>
+            <a class="button button-secondary" href="https://github.com/soumyasaxena054-rgb/cinemaGPT" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-top">
+            <h3>Food Hive</h3>
+            <span class="tag">React Architecture</span>
+          </div>
+          <p>
+            A Swiggy-inspired food ordering application built as a frontend engineering practice project, focused on reusable components, scalable state handling, and realistic user flows.
+          </p>
+          <ul class="bullet-list">
+            <li>Implemented an end-to-end ordering experience with restaurant discovery, live search, top-rated filtering, menu browsing, cart updates, billing, and order confirmation.</li>
+            <li>Fetched restaurant and menu data from live JSON endpoints and rendered dynamic UI states around real menu structure and pricing data.</li>
+            <li>Built modular React components for restaurant cards, menu sections, item lists, cart views, billing summaries, and loading states.</li>
+            <li>Used Redux Toolkit for cart state, Context API for shared user information, and custom hooks for online status and menu fetching logic.</li>
+            <li>Practiced advanced React patterns including lazy loading, Suspense, higher-order components, and unit plus integration testing with Jest and React Testing Library.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-pill">React</span>
+            <span class="tech-pill">Redux Toolkit</span>
+            <span class="tech-pill">React Router</span>
+            <span class="tech-pill">Jest</span>
+            <span class="tech-pill">React Testing Library</span>
+            <span class="tech-pill">Parcel</span>
+          </div>
+          <div class="project-links">
+            <a class="button button-primary" href="https://food-hive-bee.vercel.app/" target="_blank" rel="noreferrer">Live Demo</a>
+            <a class="button button-secondary" href="https://github.com/soumyasaxena054-rgb/Food-Hive" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-header">
+        <h2>Experience</h2>
+        <p>
+          Frontend work centered on internal product quality, scalability, and shipping features that support real customer-service workflows.
+        </p>
+      </div>
+
+      <article class="experience-card">
+        <h3>Jio Platforms Limited — Software Developer (Frontend)</h3>
+        <div class="experience-meta">
+          <span>JioAssist (Web & Mobile)</span>
+          <span>Nov 2022 – Present</span>
+        </div>
+        <p>
+          Working on JioAssist to deliver scalable React experiences used in customer support and operational workflows across internal product teams.
+        </p>
+        <ul class="bullet-list">
+          <li>Developed and maintained reusable React.js modules with an emphasis on clean architecture, maintainability, and consistent UI behavior.</li>
+          <li>Led frontend ownership of the Knowledge Management module, improving article access and support resolution efficiency.</li>
+          <li>Built a Recently Used Articles recommendation feature that improved retrieval performance by around 40%.</li>
+          <li>Created custom hooks and shared UI patterns to separate business logic from rendering concerns across the application.</li>
+          <li>Collaborated with product, backend, IVR, and design teams to deliver features across help desk and outbound campaign workflows.</li>
+          <li>Worked in an Agile environment using Azure DevOps, consistently delivering 10 to 12 or more user stories per sprint while resolving more than 100 defects across test environments.</li>
+          <li>Supported release quality through peer reviews, debugging, root cause analysis, and CAB-aligned deployment processes.</li>
+        </ul>
+        <div class="highlight">Recognized as a Star Performer for FY 2025–26.</div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="bottom-grid">
+        <div class="panel" id="skills">
+          <div class="section-header">
+            <h2>Skills</h2>
+            <p>Tools and technologies I rely on most in frontend development work.</p>
+          </div>
+          <div class="skills-grid">
+            <span class="skill">JavaScript (ES6+)</span>
+            <span class="skill">TypeScript</span>
+            <span class="skill">HTML5</span>
+            <span class="skill">CSS3</span>
+            <span class="skill">React.js</span>
+            <span class="skill">Redux Toolkit</span>
+            <span class="skill">Zustand</span>
+            <span class="skill">React Router</span>
+            <span class="skill">Tailwind CSS</span>
+            <span class="skill">Material UI</span>
+            <span class="skill">Ant Design</span>
+            <span class="skill">Chakra UI</span>
+            <span class="skill">Styled Components</span>
+            <span class="skill">Jest</span>
+            <span class="skill">React Testing Library</span>
+            <span class="skill">Git</span>
+            <span class="skill">Firebase</span>
+            <span class="skill">Vercel</span>
+            <span class="skill">Postman</span>
+            <span class="skill">Parcel</span>
+            <span class="skill">Chrome DevTools</span>
+          </div>
+        </div>
+
+        <aside class="contact-card" id="contact">
+          <h3>Contact</h3>
+          <p>
+            I’m always happy to connect about frontend engineering roles, product-focused React work, and interesting collaboration opportunities.
+          </p>
+          <div class="contact-list">
+            <a class="contact-link" href="mailto:soumyasaxena054@gmail.com">
+              <div>
+                <strong>Email</strong>
+                <span>soumyasaxena054@gmail.com</span>
+              </div>
+              <strong>Open</strong>
+            </a>
+            <a class="contact-link" href="https://www.linkedin.com/in/soumya-saxena-487b721b8" target="_blank" rel="noreferrer">
+              <div>
+                <strong>LinkedIn</strong>
+                <span>Professional profile and experience</span>
+              </div>
+              <strong>Visit</strong>
+            </a>
+            <a class="contact-link" href="https://github.com/soumyasaxena054-rgb" target="_blank" rel="noreferrer">
+              <div>
+                <strong>GitHub</strong>
+                <span>Projects, experiments, and source code</span>
+              </div>
+              <strong>Explore</strong>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Built to present projects with stronger clarity, hierarchy, and engineering context.
+    </footer>
+  </main>
+</body>
+</html>
